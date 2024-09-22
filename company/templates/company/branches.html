@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    <title>branches</title>
+{% endblock title %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item active" aria-current="page">branches</li>
+{% endblock breadcrumb %}
+
+{% block body%}
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <th>branch name</th>
+            <th>branch phone</th>
+            <th>branch mail</th>
+            <th>departments</th>
+        </thead>
+        <tbody>
+        {%for branche in branches %}
+            <tr>
+                <td><a href="{% url 'company:branchesDetails' branche.id %}">{{branche.name}}</a><br/>
+                    <small class="text-muted">{{branche.address}}</small>
+                </td>
+                <td>{{branche.phone}}</td>
+                <td>{{branche.email}}</td>
+                <td>{{branche.departmentsBranch.all|length}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'company:branch-create' %}" class="btn btn-outline-primary">new branche</a>
+{% endblock body %}

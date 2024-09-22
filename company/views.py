@@ -16,7 +16,7 @@ def branch_details(request, branch_id):
 
 
 def branch_create(request):
-    if request.method == 'POST':
+    if request.method == 'POST': 
         name = request.POST['branch-name']
         address = request.POST['branch-address']
         phone = request.POST['branch-phone']
